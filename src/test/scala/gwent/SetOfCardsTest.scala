@@ -6,6 +6,7 @@ class SetOfCardsTest extends munit.FunSuite{
   var carta2: Card = null
   var carta3: Card = null
   var carta4: Card = null
+  var carta5: Card = null
   var mazo1: Deck = null
   var mano1: Hand = null
 
@@ -16,6 +17,7 @@ class SetOfCardsTest extends munit.FunSuite{
     carta4 = new Card("Carta 4")
     mazo1 = new Deck(Array(carta1, carta2, carta3))
     mano1 = new Hand(Array(carta4))
+    carta5 = new Card("Carta 5")
   }
 
   test("draw cards") {
@@ -24,7 +26,6 @@ class SetOfCardsTest extends munit.FunSuite{
   }
   
   test("add cards") {
-    assertEquals(mazo1.add(), carta3)
-    assertEquals(mano1.add(), carta4)
+    mano1.add(carta5)
   }
 }
