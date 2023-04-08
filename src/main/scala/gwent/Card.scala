@@ -1,6 +1,5 @@
 package cl.uchile.dcc
 package gwent
 
-class Card {
-
+class Card(name: String){
 }
