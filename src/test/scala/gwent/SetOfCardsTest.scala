@@ -27,5 +27,6 @@ class SetOfCardsTest extends munit.FunSuite{
   
   test("add cards") {
     mano1.add(carta5)
+    assertEquals(mano1, Hand(Array(carta4,carta5)))
   }
 }
