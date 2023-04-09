@@ -11,13 +11,13 @@ class SetOfCardsTest extends munit.FunSuite{
   var mano1: Hand = null
 
   override def beforeEach(context: BeforeEach): Unit = {
-    carta1 = new Card("Carta 1")
-    carta2 = new Card("Carta 2")
-    carta3 = new Card("Carta 3")
-    carta4 = new Card("Carta 4")
+    carta1 = new Card("1")
+    carta2 = new Card("2")
+    carta3 = new Card("3")
+    carta4 = new Card("4")
     mazo1 = new Deck(Array(carta1, carta2, carta3))
     mano1 = new Hand(Array(carta4))
-    carta5 = new Card("Carta 5")
+    carta5 = new Card("5")
   }
 
   test("draw cards") {
