@@ -21,6 +21,7 @@ class CardTest extends munit.FunSuite{
 
   test("equal") {
     assertEquals(magoOscuro, magoOscuro2)
+    assertNotEquals(magoOscuro,nubecita)
   }
 
 }

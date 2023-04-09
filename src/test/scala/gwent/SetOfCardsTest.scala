@@ -20,11 +20,15 @@ class SetOfCardsTest extends munit.FunSuite{
     carta5 = new Card("5")
   }
 
+  test("equals") {
+    assertEquals(mazo1, Deck(Array(Card("1"), Card("2"), Card("3"))))
+  }
+
   test("draw cards") {
     assertEquals(mazo1.draw(), carta3)
     assertEquals(mano1.draw(), carta4)
   }
-  
+
   test("add cards") {
     mano1.add(carta5)
     assertEquals(mano1, Hand(Array(carta4,carta5)))

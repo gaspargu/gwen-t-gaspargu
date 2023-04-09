@@ -27,7 +27,7 @@ class PlayerTest extends munit.FunSuite{
   test("play a card from the hand") {
     jugadorJaime.playCard()
     assertEquals(jugadorJaime, Player("Jaime", true, 2, Deck(Array(Card("carta 1"),
-      Card("carta 2"))), Hand(Array())))
+      Card("carta 2"))), null))
   }
 
 }
