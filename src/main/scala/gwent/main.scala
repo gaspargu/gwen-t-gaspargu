@@ -4,4 +4,6 @@ package gwent
 @main
 def main(): Unit = {
   println("Hello world!")
+  print("coco\n")
+  print("pepe")
 }
