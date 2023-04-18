@@ -14,7 +14,7 @@ class CardTest extends munit.FunSuite{
     nubecita = new Card("Nubecita")
   }
 
-  test("gets") {
+  test("gets of name of cards") {
     assertEquals(magoOscuro.getName(),"Mago Oscuro")
     assertEquals(nubecita.getName(), "Nubecita")
   }
@@ -22,6 +22,7 @@ class CardTest extends munit.FunSuite{
   test("equal") {
     assertEquals(magoOscuro, magoOscuro2)
     assertNotEquals(magoOscuro,nubecita)
+    assertEquals(new Card("Dragón Bello"), dragonBello)
   }
 
 }
