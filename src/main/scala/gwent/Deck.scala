@@ -1,11 +1,27 @@
 package cl.uchile.dcc
 package gwent
 
-class Deck(deck: Array[Card]) extends SetofCards {
-  def draw(): Card = new Card("nada")
+import scala.collection.mutable.ListBuffer
 
-  def add(card: Card): Unit = {
-    
+class Deck(deck: ListBuffer[Card]) {
+  override def toString: String = s"Deck(deck=$deck)"
+  def getDeck(): ListBuffer[Card] = deck
+
+  def draw(): Option[Card] = {
+    if (deck.isEmpty) {
+      println("There are no cards left in the deck")
+      return None
+    } else {
+      return Some(deck.remove(0))
+    }
   }
 
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Deck]) {
+      val other_deck = other.asInstanceOf[Deck]
+      deck == other_deck.getDeck()
+    } else {
+      false
+    }
+  }
 }
