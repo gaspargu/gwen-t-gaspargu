@@ -29,7 +29,7 @@ class DeckTest extends munit.FunSuite {
     assertNotEquals(mazo, new Deck(ListBuffer(new Card("1"))))
   }
 
-  test("draw card of the deck") {
+  test("draw card from the deck") {
     assertEquals(mazo.draw(),Some(carta1))
     assertEquals(mazo, new Deck(ListBuffer(new Card("2"), new Card("3"),new Card("4"))))
     assertEquals(mazo.draw(),Some(carta2))

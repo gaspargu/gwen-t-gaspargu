@@ -10,9 +10,9 @@ class Deck(deck: ListBuffer[Card]) {
   def draw(): Option[Card] = {
     if (deck.isEmpty) {
       println("There are no cards left in the deck")
-      return None
+      None
     } else {
-      return Some(deck.remove(0))
+      Some(deck.remove(0))
     }
   }
 

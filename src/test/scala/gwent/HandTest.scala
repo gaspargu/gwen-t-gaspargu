@@ -33,4 +33,13 @@ class HandTest extends munit.FunSuite {
       new Card("3"), new Card("4"))))
   }
 
+  test("choose card from the hand") {
+    assertEquals(mano.chooseCard("2"), Some(carta2))
+    assertEquals(mano, new Hand(ListBuffer(new Card("1"),new Card("3"))))
+  }
+
+  test("exception: the card is not found") {
+    assertEquals(mano.chooseCard("bla"), None)
+    assertEquals(mano, new Hand(ListBuffer(new Card("1"),new Card("2"),new Card("3"))))
+  }
 }
