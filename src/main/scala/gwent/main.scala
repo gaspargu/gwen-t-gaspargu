@@ -11,7 +11,6 @@ def main(): Unit = {
   val mazo_animales: Deck = new Deck(ListBuffer(perrito,gatito,conejo))
   val mano_animales: Hand = new Hand(ListBuffer(perrito,gatito))
 
-  println(mano_animales.chooseCard("gatito"))
   println(mano_animales)
 
 }

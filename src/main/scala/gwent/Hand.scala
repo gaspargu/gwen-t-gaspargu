@@ -3,10 +3,8 @@ package gwent
 
 import scala.collection.mutable.ListBuffer
 
-class Hand(private var hand: ListBuffer[Card]) {
+class Hand(private var hand: ListBuffer[Card]) extends AbstractListOfCards(hand) {
   override def toString: String = s"Hand(hand=$hand)"
-
-  def getHand(): ListBuffer[Card] = hand
   
   def chooseCard(name: String): Option[Card] = {
     for (i <- hand.indices) {
@@ -25,7 +23,7 @@ class Hand(private var hand: ListBuffer[Card]) {
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Hand]) {
       val other_hand = other.asInstanceOf[Hand]
-      hand == other_hand.getHand()
+      hand == other_hand.getList()
     } else {
       false
     }

@@ -11,8 +11,6 @@ class Card(name: String){
     if (other.isInstanceOf[Card]) {
       val other_card = other.asInstanceOf[Card]
       name == other_card.getName()
-    } else {
-      false
-    }
+    } else false
   }
 }

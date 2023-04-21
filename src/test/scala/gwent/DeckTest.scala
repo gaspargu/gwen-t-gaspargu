@@ -11,6 +11,7 @@ class DeckTest extends munit.FunSuite {
   var carta4: Card = null
   var mazo: Deck = null
   var mazo_vacio: Deck = null
+  var mazo_nulo: Deck = null
 
   override def beforeEach(context: BeforeEach): Unit = {
 
@@ -36,8 +37,16 @@ class DeckTest extends munit.FunSuite {
     assertEquals(mazo, new Deck(ListBuffer(new Card("3"),new Card("4"))))
   }
 
+  test("toString method") {
+    assertEquals(mazo.toString, "Deck(deck=ListBuffer(Card(name=1), Card(name=2), Card(name=3), Card(name=4)))")
+  }
+
   test("exception: empty deck") {
     assertEquals(mazo_vacio.draw(),None)
+  }
+
+  test("no equals with null deck") {
+    assertNotEquals(mazo, mazo_nulo)
   }
 
 }

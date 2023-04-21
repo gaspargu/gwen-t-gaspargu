@@ -3,9 +3,8 @@ package gwent
 
 import scala.collection.mutable.ListBuffer
 
-class Deck(deck: ListBuffer[Card]) {
+class Deck(deck: ListBuffer[Card]) extends AbstractListOfCards(deck) {
   override def toString: String = s"Deck(deck=$deck)"
-  def getDeck(): ListBuffer[Card] = deck
 
   def draw(): Option[Card] = {
     if (deck.isEmpty) {
@@ -19,7 +18,7 @@ class Deck(deck: ListBuffer[Card]) {
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Deck]) {
       val other_deck = other.asInstanceOf[Deck]
-      deck == other_deck.getDeck()
+      deck == other_deck.getList()
     } else {
       false
     }

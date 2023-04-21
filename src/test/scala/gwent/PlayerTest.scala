@@ -18,6 +18,7 @@ class PlayerTest extends munit.FunSuite{
   var manojaime: Hand = null
   var jugadorPepe: Player = null
   var jugadorJaime: Player = null
+  var jugador_falso: Player = null
 
   override def beforeEach(context: BeforeEach): Unit = {
     carta1 = new Card("1")
@@ -60,5 +61,9 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugadorJaime, new Player("Jaime",false,2,
       new Deck(ListBuffer(new Card("5"),new Card("6"),new Card("7"))),
       new Hand(ListBuffer())))
+  }
+
+  test("not equals with null player") {
+    assertNotEquals(jugadorJaime, jugador_falso)
   }
 }

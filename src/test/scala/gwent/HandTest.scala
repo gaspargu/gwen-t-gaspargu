@@ -10,6 +10,7 @@ class HandTest extends munit.FunSuite {
   var carta4: Card = null
   var mano: Hand = null
   var mano_vacia: Hand = null
+  var mano_nula: Hand = null
 
   override def beforeEach(context: BeforeEach): Unit = {
 
@@ -41,5 +42,13 @@ class HandTest extends munit.FunSuite {
   test("exception: the card is not found") {
     assertEquals(mano.chooseCard("bla"), None)
     assertEquals(mano, new Hand(ListBuffer(new Card("1"),new Card("2"),new Card("3"))))
+  }
+
+  test("toString method") {
+    assertEquals(mano.toString, "Hand(hand=ListBuffer(Card(name=1), Card(name=2), Card(name=3)))")
+  }
+
+  test("not equals with null hand") {
+    assertNotEquals(mano, mano_nula)
   }
 }
