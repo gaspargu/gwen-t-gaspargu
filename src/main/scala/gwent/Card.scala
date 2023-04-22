@@ -1,6 +1,23 @@
 package cl.uchile.dcc
 package gwent
 
+/** A class representing a card.
+ *
+ * The card is defined by its name.
+ *
+ * @param name The name of the card.
+ *
+ * @constructor Creates a new card with the specified name.
+ *
+ * @example
+ * {{{
+ * val card = new Card("Dark Dragon")
+ * val name = card.getName()
+ * println(s"The name of the card is $name")
+ * }}}
+ *
+ */
+
 class Card(name: String){
   def getName(): String = name
 
