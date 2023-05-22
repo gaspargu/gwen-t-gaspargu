@@ -10,7 +10,7 @@ package gwent
  *
  *
  */
-abstract class UnitCard(name: String, atk: Int) extends Card(name){
+class UnitCard(name: String, atk: Int) extends Card(name){
   def getAttack(): Int = atk
 
 }
