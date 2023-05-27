@@ -28,12 +28,12 @@ trait Card {
   /** The name of the card.
    * This is an immutable property.
    */
-  val name: String
+  def name: String
 
   /** A description of the card's properties or effects.
    * This is an immutable property.
    */
-  val description: String
+  def description: String
 
   def putInCloseCombatZone(zone: CloseCombatZone): Unit
 

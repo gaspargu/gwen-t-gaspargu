@@ -21,14 +21,14 @@ import gwent.board.{CloseCombatZone, RangedZone, SiegeZone}
  * @version 1.1
  * @since 1.0
  */
-abstract class AbstractUnitCard protected(val name: String, val description: String,
-                                          val power: Int) extends Card {
+abstract class AbstractUnitCard(private val _name: String, private val _description: String,
+                                private val _power: Int) extends Card {
 
   /** The current power of the card, which may be affected by various conditions during
    * gameplay.
-   * Initially set to the base [[power]] of the card.
+   * Initially set to the base [[_power]] of the card.
    */
-  var currentPower: Int = power
-
+  var currentPower: Int = _power
+  
   
 }
