@@ -2,14 +2,14 @@ package cl.uchile.dcc
 package gwent.cards
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
-class RangedCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power) {
-   def getName: String = name
-   def getDescription: String = description
+class RangedCombatCard(private val _name: String, private val _description: String, private val _power: Int)
+  extends AbstractUnitCard(_name, _description, _power) {
+   def name: String = _name
+   def description: String = _description
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[RangedCombatCard]) {
       val card = obj.asInstanceOf[RangedCombatCard]
-      (card.getName == name && card.getDescription == description && card.power == power)
+      (card.name == _name && card.description == _description && card.getCurrentPower == this.getCurrentPower)
     } else {
       false
     }

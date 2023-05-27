@@ -24,11 +24,19 @@ import gwent.board.{CloseCombatZone, RangedZone, SiegeZone}
 abstract class AbstractUnitCard(private val _name: String, private val _description: String,
                                 private val _power: Int) extends Card {
 
+  def power: Int = _power
+
   /** The current power of the card, which may be affected by various conditions during
    * gameplay.
    * Initially set to the base [[_power]] of the card.
    */
   var currentPower: Int = _power
+
+  def getCurrentPower: Int = currentPower
   
+  def setCurrentPower(newPower: Int): Unit = currentPower = newPower
+
+  
+
   
 }
