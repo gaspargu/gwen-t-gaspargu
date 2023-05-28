@@ -8,6 +8,10 @@ class SiegeCombatCard(private val _name: String, private val _description: Strin
   def name: String = _name
   def description: String = _description
 
+  override def toString: String = {
+    "SiegeCombatCard(" + name + ", " + description + ", " + _power.toString + ")"
+  }
+
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[SiegeCombatCard]) {
       val card = obj.asInstanceOf[SiegeCombatCard]

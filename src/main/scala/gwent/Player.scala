@@ -14,7 +14,7 @@ import gwent.cards.Card
  * mutable state and make our code safer and easier to reason about.
  *
  * @constructor Create a new player with a name, gem counter, deck, and hand.
- * @param name The name of the player.
+ * @param _name The name of the player.
  * @param gemCounter The initial gem count for the player.
  * @param _deck The initial list of cards in the player's deck.
  * @param _hand The initial list of cards in the player's hand.
@@ -24,14 +24,26 @@ import gwent.cards.Card
  * @since 1.0
  */
 
-class Player(val name: String, var gemCounter: Int, private var _deck: List[Card],
+class Player(private val _name: String, var gemCounter: Int, private var _deck: List[Card],
              private var _hand: List[Card]) {
+
+  /** Accessor method for the player's name */
+  def name: String = _name
 
   /** Accessor method for the player's deck */
   def deck: List[Card] = _deck
 
   /** Accessor method for the player's hand */
   def hand: List[Card] = _hand
+
+  override def equals(obj: Any): Boolean = {
+    if (obj.isInstanceOf[Player]) {
+      val player = obj.asInstanceOf[Player]
+      (player.name == _name && player.deck == _deck && player.hand == _hand)
+    } else {
+      false
+    }
+  }
 
   /** Draws a card from the deck and adds it to the hand.
    *
@@ -68,8 +80,9 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def playCard(name: String): Option[Card] = {
     val card = hand.find(_.name == name)
     if (card.isDefined) {
-      val card_found = card.get
-      val _hand = hand.filterNot(_ == card_found)
+      val cardFound = card.get
+      val (before, after) = hand.span(_ != cardFound)
+      _hand = before ::: after.drop(1)
     }
     card
   }

@@ -34,6 +34,8 @@ trait Card {
    * This is an immutable property.
    */
   def description: String
+  
+  def toString: String
 
   def putInCloseCombatZone(zone: CloseCombatZone): Unit
 

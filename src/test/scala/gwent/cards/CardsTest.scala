@@ -7,17 +7,20 @@ class CardsTest extends munit.FunSuite {
   var card3: RangedCombatCard = null
   var nullCard: SiegeCombatCard = null
   var wrongCard: SiegeCombatCard = null
+  var weatherCard: WeatherCard = null
 
   override def beforeEach(context: BeforeEach): Unit= {
     card1 = new CloseCombatCard("carta 1","bla",10)
     card2 = new SiegeCombatCard("carta 2","bla",5)
     card3 = new RangedCombatCard("carta 3","bla",4)
+    weatherCard = new WeatherCard("rain", "a thing that wets things")
   }
 
   test("equals") {
     assertEquals(card1, new CloseCombatCard("carta 1", "bla",10))
     assertEquals(card2, new SiegeCombatCard("carta 2", "bla", 5))
     assertEquals(card3, new RangedCombatCard("carta 3", "bla", 4))
+    assertEquals(weatherCard, new WeatherCard("rain", "a thing that wets things"))
   }
 
   test("not equals") {
@@ -25,6 +28,12 @@ class CardsTest extends munit.FunSuite {
     assertNotEquals(card2, nullCard)
     assert(card1 != card2)
     assert(card3 != new CloseCombatCard(".",".",0))
+  }
+
+  test("toString method") {
+    assertEquals(card1.toString, "CloseCombatCard(carta 1, bla, 10)")
+    assertEquals(card2.toString, "SiegeCombatCard(carta 2, bla, 5)")
+    assertEquals(card3.toString, "RangedCombatCard(carta 3, bla, 4)")
   }
 }
 

@@ -6,6 +6,10 @@ class RangedCombatCard(private val _name: String, private val _description: Stri
   extends AbstractUnitCard(_name, _description, _power) {
    def name: String = _name
    def description: String = _description
+
+  override def toString: String = {
+    "RangedCombatCard(" + name + ", " + description + ", " + _power.toString + ")"
+  }
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[RangedCombatCard]) {
       val card = obj.asInstanceOf[RangedCombatCard]
