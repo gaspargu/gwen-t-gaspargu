@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent
 
-class PlayerTest {
+class PlayerTest extends munit.FunSuite {
 
 }

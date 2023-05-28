@@ -2,7 +2,9 @@ package cl.uchile.dcc
 package gwent.cards
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
-class WeatherCard(val name: String, val description: String) extends Card {
+class WeatherCard(private val _name: String, private val _description: String) extends Card {
+  override def name: String = _name
+  override def description: String = _description
   override def putInCloseCombatZone(zone: CloseCombatZone): Unit = {}
 
   override def putInSiegeZone(zone: SiegeZone): Unit = {}
