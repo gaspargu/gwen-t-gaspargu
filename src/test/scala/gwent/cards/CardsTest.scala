@@ -28,12 +28,18 @@ class CardsTest extends munit.FunSuite {
     assertNotEquals(card2, nullCard)
     assert(card1 != card2)
     assert(card3 != new CloseCombatCard(".",".",0))
+    assert(weatherCard != nullCard)
   }
 
   test("toString method") {
     assertEquals(card1.toString, "CloseCombatCard(carta 1, bla, 10)")
     assertEquals(card2.toString, "SiegeCombatCard(carta 2, bla, 5)")
     assertEquals(card3.toString, "RangedCombatCard(carta 3, bla, 4)")
+    assertEquals(weatherCard.toString, "WeatherCard(rain, a thing that wets things)")
+  }
+
+  test("show the power of a Unit Card") {
+    assertEquals(card3.power, 4)
   }
 }
 

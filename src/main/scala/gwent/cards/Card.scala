@@ -19,24 +19,33 @@ import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
  * behaviours, are to be defined in the concrete classes that extend this trait.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~YOUR NAME~
+ * @author ~Gaspar Gumucio Gallardo~
  * @version 1.1
  * @since 1.0
  */
 trait Card {
 
-  /** The name of the card.
+  /** Getter method to the name of the card.
    * This is an immutable property.
    */
   def name: String
 
-  /** A description of the card's properties or effects.
+  /** Getter method to the description of the card.
+   * Is a description of the card's properties or effects.
    * This is an immutable property.
    */
   def description: String
-  
+
   def toString: String
 
+  /**
+   *
+   * This method is called when this card is try to be played in the board.
+   * Depending if the concrete type of the card match with the zone, the method implemented must
+   * add the card to the zone, or do nothing if not match with the type.
+   *
+   * @param zone The CloseCombatZone of the board where the card is try to be played.
+   * */
   def putInCloseCombatZone(zone: CloseCombatZone): Unit
 
   def putInSiegeZone(zone: SiegeZone): Unit

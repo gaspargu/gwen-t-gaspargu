@@ -37,4 +37,10 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(jugador2.deck, List(carta6))
     assertEquals(jugador2.hand, List(carta5,carta7,carta8))
   }
+
+  test("shuffle deck") {
+    val lenDeck = jugador1.deck.length
+    jugador1.shuffleDeck()
+    assertEquals(jugador1.deck.length,lenDeck)
+  }
 }
