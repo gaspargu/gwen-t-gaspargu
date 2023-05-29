@@ -14,3 +14,5 @@ This project's goal is to create a (simplified) clone of the
 ---
 
 **The rest of the documentation is left for the users of this template to complete**
+
+Hasta el momento se ha implementado el jugador y las cartas. 
