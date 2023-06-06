@@ -21,6 +21,9 @@ class RangedZone(val player: Player) extends CombatZone {
   
   def putRangedCard(card: Card): Unit = card.putInRangedZone(this)
 
-  def show: List[RangedCombatCard] = list
+  def show: List[RangedCombatCard] = {
+    val copiedList = list.toList
+    copiedList
+  }
 }
 
