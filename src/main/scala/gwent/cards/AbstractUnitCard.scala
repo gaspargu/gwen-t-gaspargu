@@ -3,6 +3,8 @@ package gwent.cards
 
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone}
 
+import cl.uchile.dcc.gwent.effects.{CombatEffect, Effect}
+
 /** Abstract class representing a unit card in the Gwen't game.
  *
  * An `AbstractUnitCard` is a type of [[Card]] that has a power value which contributes to
@@ -22,7 +24,7 @@ import gwent.board.{CloseCombatZone, RangedZone, SiegeZone}
  * @since 1.0
  */
 abstract class AbstractUnitCard(private val _name: String, private val _description: String,
-                                private val _power: Int) extends Card {
+                                private val _power: Int, private val _effect:CombatEffect) extends Card {
 
   def power: Int = _power
 

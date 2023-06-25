@@ -3,6 +3,8 @@ package gwent.cards
 
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
+import cl.uchile.dcc.gwent.effects.Effect
+
 /** Trait representing a card in the Gwen't game.
  *
  * A card is characterized by its [[name]] and [[description]].

@@ -2,6 +2,8 @@ package cl.uchile.dcc
 package gwent.cards
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
+import cl.uchile.dcc.gwent.effects.CombatEffect
+
 /** Class representing a close combat unit card in the Gwen't game.
  *
  * A `CloseCombatCard` is a type of [[AbstractUnitCard]].
@@ -21,8 +23,9 @@ import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
  * @since 1.0
  */
 
-class CloseCombatCard(private val _name: String, private val _description: String, private val _power: Int)
-  extends AbstractUnitCard(_name, _description, _power) {
+class CloseCombatCard(private val _name: String, private val _description: String, private val _power: Int,
+                      private val _effect: CombatEffect)
+  extends AbstractUnitCard(_name, _description, _power, _effect) {
   def name: String = _name
   def description: String = _description
 
@@ -33,7 +36,7 @@ class CloseCombatCard(private val _name: String, private val _description: Strin
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[CloseCombatCard]) {
       val card = obj.asInstanceOf[CloseCombatCard]
-      (card.name == _name && card.description == _description && card.getCurrentPower == this.getCurrentPower)
+      (card.name == _name && card.description == _description)
     } else {
       false
     }

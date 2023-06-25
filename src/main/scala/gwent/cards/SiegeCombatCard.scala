@@ -3,8 +3,11 @@ package gwent.cards
 
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
-class SiegeCombatCard(private val _name: String, private val _description: String, private val _power: Int)
-  extends AbstractUnitCard(_name, _description, _power) {
+import cl.uchile.dcc.gwent.effects.CombatEffect
+
+class SiegeCombatCard(private val _name: String, private val _description: String, private val _power: Int,
+                      private val _effect: CombatEffect)
+  extends AbstractUnitCard(_name, _description, _power, _effect) {
   def name: String = _name
   def description: String = _description
 
@@ -15,7 +18,7 @@ class SiegeCombatCard(private val _name: String, private val _description: Strin
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[SiegeCombatCard]) {
       val card = obj.asInstanceOf[SiegeCombatCard]
-      (card.name == _name && card.description == _description && card.getCurrentPower == this.getCurrentPower)
+      (card.name == _name && card.description == _description)
     } else {
       false
     }
