@@ -18,7 +18,7 @@ class SiegeCombatCard(private val _name: String, private val _description: Strin
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[SiegeCombatCard]) {
       val card = obj.asInstanceOf[SiegeCombatCard]
-      (card.name == _name && card.description == _description)
+      (card.name == _name && card.description == _description && card.currentPower == this.currentPower)
     } else {
       false
     }

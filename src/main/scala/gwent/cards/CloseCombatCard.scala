@@ -36,7 +36,7 @@ class CloseCombatCard(private val _name: String, private val _description: Strin
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[CloseCombatCard]) {
       val card = obj.asInstanceOf[CloseCombatCard]
-      (card.name == _name && card.description == _description)
+      (card.name == _name && card.description == _description && card.currentPower == this.currentPower)
     } else {
       false
     }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import gwent.effects.{ClearWeather, NullEffect}
+
 class CardsTest extends munit.FunSuite {
   var card1: CloseCombatCard = null
   var card2: SiegeCombatCard = null
@@ -8,26 +10,28 @@ class CardsTest extends munit.FunSuite {
   var nullCard: SiegeCombatCard = null
   var wrongCard: SiegeCombatCard = null
   var weatherCard: WeatherCard = null
+  var nullEffect = NullEffect
+  var clearWeather: ClearWeather = new ClearWeather
 
   override def beforeEach(context: BeforeEach): Unit= {
-    card1 = new CloseCombatCard("carta 1","bla",10)
-    card2 = new SiegeCombatCard("carta 2","bla",5)
-    card3 = new RangedCombatCard("carta 3","bla",4)
-    weatherCard = new WeatherCard("rain", "a thing that wets things")
+    card1 = new CloseCombatCard("carta 1","bla",10, nullEffect)
+    card2 = new SiegeCombatCard("carta 2","bla",5, nullEffect)
+    card3 = new RangedCombatCard("carta 3","bla",4, nullEffect)
+    weatherCard = new WeatherCard("rain", "a thing that wets things", clearWeather)
   }
 
   test("equals") {
-    assertEquals(card1, new CloseCombatCard("carta 1", "bla",10))
-    assertEquals(card2, new SiegeCombatCard("carta 2", "bla", 5))
-    assertEquals(card3, new RangedCombatCard("carta 3", "bla", 4))
-    assertEquals(weatherCard, new WeatherCard("rain", "a thing that wets things"))
+    assertEquals(card1, new CloseCombatCard("carta 1", "bla",10, nullEffect))
+    assertEquals(card2, new SiegeCombatCard("carta 2", "bla", 5, nullEffect))
+    assertEquals(card3, new RangedCombatCard("carta 3", "bla", 4, nullEffect))
+    assertEquals(weatherCard, new WeatherCard("rain", "a thing that wets things", clearWeather))
   }
 
   test("not equals") {
-    assertNotEquals(card1, new CloseCombatCard("carta1", "bla", 10))
+    assertNotEquals(card1, new CloseCombatCard("carta1", "bla", 10, nullEffect))
     assertNotEquals(card2, nullCard)
     assert(card1 != card2)
-    assert(card3 != new CloseCombatCard(".",".",0))
+    assert(card3 != new CloseCombatCard(".",".",0, nullEffect))
     assert(weatherCard != nullCard)
   }
 

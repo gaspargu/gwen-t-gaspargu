@@ -77,8 +77,8 @@ class Player(private val _name: String, var gemCounter: Int, private var _deck: 
    *
    * @return The card that was chosen by the player.
    */
-  def playCard(name: String): Option[Card] = {
-    val card = hand.find(_.name == name)
+  def playCard(c: Card): Option[Card] = {
+    val card = hand.find(_ == c)
     if (card.isDefined) {
       val cardFound = card.get
       val (before, after) = hand.span(_ != cardFound)

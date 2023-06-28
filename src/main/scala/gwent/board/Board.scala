@@ -38,8 +38,8 @@ class Board(player1: Player, player2: Player) {
    *
    * @param nameCard The name of the card to be played.
    */
-  def player1PlayCard(nameCard: String): Unit = {
-    val undefinedCard = player1.playCard(nameCard)
+  def player1PlayCard(c: Card): Unit = {
+    val undefinedCard = player1.playCard(c)
     if (undefinedCard.isDefined) {
       val card = undefinedCard.get
       zone1.closecombatZone.putCloseCombatCard(card)
@@ -56,8 +56,8 @@ class Board(player1: Player, player2: Player) {
  *
  * @param nameCard The name of the card to be played.
  * */
-  def player2PlayCard(nameCard: String): Unit = {
-    val undefinedCard = player2.playCard(nameCard)
+  def player2PlayCard(c: Card): Unit = {
+    val undefinedCard = player2.playCard(c)
     if (undefinedCard.isDefined) {
       val card = undefinedCard.get
       zone2.closecombatZone.putCloseCombatCard(card)
