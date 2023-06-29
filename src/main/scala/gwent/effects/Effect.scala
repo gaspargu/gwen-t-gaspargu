@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.effects
 
-trait Effect {
+import gwent.observer.Subject
+
+trait Effect[T] extends Subject[T]{
 
 }

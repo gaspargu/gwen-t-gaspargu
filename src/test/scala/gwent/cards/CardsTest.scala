@@ -10,7 +10,7 @@ class CardsTest extends munit.FunSuite {
   var nullCard: SiegeCombatCard = null
   var wrongCard: SiegeCombatCard = null
   var weatherCard: WeatherCard = null
-  var nullEffect = NullEffect
+  var nullEffect: NullEffect = new NullEffect
   var clearWeather: ClearWeather = new ClearWeather
 
   override def beforeEach(context: BeforeEach): Unit= {

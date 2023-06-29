@@ -8,7 +8,7 @@ import gwent.cards.{CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherC
 class TestEffect extends munit.FunSuite {
   var jugador1: Player = null
   var jugador2: Player = null
-  var nullEffect = NullEffect
+  var nullEffect: NullEffect = new NullEffect
   var moraleBoost: MoraleBoost = new MoraleBoost
   var cartaEfecto: CloseCombatCard = null
   var carta1: CloseCombatCard = null

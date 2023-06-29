@@ -9,7 +9,7 @@ import cl.uchile.dcc.gwent.effects.{ClearWeather, NullEffect}
 class BoardTest extends munit.FunSuite {
   var jugador1: Player = null
   var jugador2: Player = null
-  var nullEffect = NullEffect
+  var nullEffect: NullEffect = new NullEffect
   var clearWeather: ClearWeather = new ClearWeather
   var carta1: CloseCombatCard = new CloseCombatCard("carta1", "", 2, nullEffect)
   var carta2: CloseCombatCard = new CloseCombatCard("carta2", "", 3, nullEffect)
