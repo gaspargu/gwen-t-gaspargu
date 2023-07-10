@@ -3,6 +3,6 @@ package gwent.effects
 
 import gwent.observer.Subject
 
-trait Effect[T] extends Subject[T]{
+trait Effect {
 
 }

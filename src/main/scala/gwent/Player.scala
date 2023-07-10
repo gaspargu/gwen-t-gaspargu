@@ -86,5 +86,11 @@ class Player(private val _name: String, var gemCounter: Int, private var _deck: 
     }
     card
   }
+
+  /** Causes the player's gem counter to be reduced by one if it is greater than 0.
+   */
+  def lostGem():Unit = {
+
+  }
   
 }
