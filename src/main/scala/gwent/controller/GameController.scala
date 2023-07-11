@@ -3,9 +3,18 @@ package gwent.controller
 
 import gwent.states.{GameState, Init}
 
+import cl.uchile.dcc.gwent.Player
 import cl.uchile.dcc.gwent.cards.Card
+import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
 
-class GameController {
+class GameController(private val players: List[Player]) extends Observer[String] {
+  for (player <- players) {
+    player.registerObserver(this)
+  }
+
+  override def update(o: ISubject[String], arg: String): Unit = {
+    println("Player "+ arg+" lose the game")
+  }
 
   var state: GameState = new Init(this)
 

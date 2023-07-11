@@ -3,6 +3,8 @@ package gwent
 
 import gwent.cards.Card
 
+import gwent.observer.{Subject}
+
 /** Class representing a player in the Gwen't game.
  *
  * Each player has a name, a gem counter, a deck of cards, and a hand of cards.
@@ -25,7 +27,7 @@ import gwent.cards.Card
  */
 
 class Player(private val _name: String, var gemCounter: Int, private var _deck: List[Card],
-             private var _hand: List[Card]) {
+             private var _hand: List[Card]) extends Subject[String]{
 
   /** Accessor method for the player's name */
   def name: String = _name
@@ -88,9 +90,18 @@ class Player(private val _name: String, var gemCounter: Int, private var _deck: 
   }
 
   /** Causes the player's gem counter to be reduced by one if it is greater than 0.
+   * If the gem counter is already zero, return an error.
    */
-  def lostGem():Unit = {
-
+  def lostGem(): Unit = {
+    if (gemCounter > 0) {
+      gemCounter -= 1
+      if (gemCounter == 0) {
+        println("Player "+ _name+" loose the game")
+        notifyObservers(_name)
+      }
+    } else {
+      println("The gems counter can't be negative")
+    }
   }
   
 }
