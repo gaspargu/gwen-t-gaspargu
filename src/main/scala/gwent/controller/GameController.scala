@@ -1,0 +1,36 @@
+package cl.uchile.dcc
+package gwent.controller
+
+import gwent.states.{GameState, Init}
+
+import cl.uchile.dcc.gwent.Player
+import cl.uchile.dcc.gwent.cards.Card
+import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
+
+class GameController(private val players: List[Player]) extends Observer[String] {
+  for (player <- players) {
+    player.registerObserver(this)
+  }
+
+  override def update(o: ISubject[String], arg: String): Unit = {
+    println("Player "+ arg+" lose the game")
+  }
+
+  var state: GameState = new Init(this)
+
+  def finishInit() = state.finishInit()
+
+  def flipCoin() = state.flipCoin()
+  def playCard(card: Card): Unit = state.playCard(card)
+
+  def changePlayer() = state.changePlayer()
+
+  def pass() = state.pass()
+
+  def draw3Card() = state.draw3Card()
+
+  def gemsNot0() = state.gemsNot0()
+
+  def someCountGemsIs0() = state.someCountGemsIs0()
+
+}
