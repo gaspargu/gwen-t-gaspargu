@@ -17,6 +17,7 @@ class CloseCombatZone() extends CombatZone{
   var list: List[CloseCombatCard] = List()
 
   def addCard(card: CloseCombatCard): Unit = {
+    list.map(card.effect(card,_))
     list = card :: list
   }
 
