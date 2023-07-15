@@ -17,17 +17,25 @@ import cl.uchile.dcc.gwent.cards.Card
  */
 
 class Board(player1: Player, player2: Player) {
+  
 
   /** Combat zone of the player 1. */
-  val zone1: Zone = new Zone(player1)
+  val zone1: Zone = new Zone()
+  
+  player1.assignZone(zone1)
 
   /** Combat zone of the player 2. */
-  val zone2: Zone = new Zone(player2)
+  val zone2: Zone = new Zone()
+  
+  player2.assignZone(zone2)
 
   /** Zone where the weather cards can be played. */
   val weatherZone: WeatherZone = new WeatherZone()
+  
+  player1.assignWeatherZone(weatherZone)
+  player2.assignWeatherZone(weatherZone)
 
-  /** Player 1 plays a cards in the board.
+  /** Player plays a cards in the board.
    *
    * The player plays a card by its name. If the card exists in their hand,
    * it is played in the corresponding zone based on the type of the card.
@@ -38,33 +46,7 @@ class Board(player1: Player, player2: Player) {
    *
    * @param nameCard The name of the card to be played.
    */
-  def player1PlayCard(c: Card): Unit = {
-    val undefinedCard = player1.playCard(c)
-    if (undefinedCard.isDefined) {
-      val card = undefinedCard.get
-      zone1.closecombatZone.putCloseCombatCard(card)
-      zone1.siegeZone.putSiegeCard(card)
-      zone1.rangedZone.putRangedCard(card)
-      weatherZone.putWeatherCard(card)
-    }
-    
-  }
-
-/** Player 2 plays a cards in the board.
- *
- * Note: Same rules that player 1.
- *
- * @param nameCard The name of the card to be played.
- * */
-  def player2PlayCard(c: Card): Unit = {
-    val undefinedCard = player2.playCard(c)
-    if (undefinedCard.isDefined) {
-      val card = undefinedCard.get
-      zone2.closecombatZone.putCloseCombatCard(card)
-      zone2.siegeZone.putSiegeCard(card)
-      zone2.rangedZone.putRangedCard(card)
-      weatherZone.putWeatherCard(card)
-    }
-    
-  }
+  
+  
+  
 }

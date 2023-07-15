@@ -3,7 +3,7 @@ package gwent.cards
 
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone}
 
-import cl.uchile.dcc.gwent.effects.{CombatEffect, Effect}
+import cl.uchile.dcc.gwent.effects.Effect
 import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
 
 /** Abstract class representing a unit card in the Gwen't game.
@@ -25,7 +25,7 @@ import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
  * @since 1.0
  */
 abstract class AbstractUnitCard(private val _name: String, private val _description: String,
-                                private val _power: Int, private val _effect:CombatEffect)
+                                private val _power: Int, private val _effect:Effect)
   extends Card with Observer[Int] {
 
   def power: Int = _power

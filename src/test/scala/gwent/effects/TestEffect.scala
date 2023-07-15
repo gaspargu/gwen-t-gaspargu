@@ -4,6 +4,7 @@ package gwent.effects
 import gwent.Player
 import gwent.board.Board
 import gwent.cards.{CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
+import gwent.effects.NullEffect
 
 class TestEffect extends munit.FunSuite {
   var jugador1: Player = null
@@ -24,13 +25,13 @@ class TestEffect extends munit.FunSuite {
     jugador1 = new Player("Jugador 1", 3, List(), List(cartaEfecto,carta1,carta2,carta3))
     jugador2 = new Player("Jugador 2", 3, List(), List())
     board = new Board(jugador1, jugador2)
-    board.player1PlayCard(carta1)
-    board.player1PlayCard(carta2)
-    board.player1PlayCard(carta3)
+    jugador1.playCard(carta1)
+    jugador1.playCard(carta2)
+    jugador1.playCard(carta3)
   }
 
   test("MoralBoost add +1 to cards of same row") {
-    board.player1PlayCard(cartaEfecto)
+    jugador1.playCard(cartaEfecto)
     assertEquals(board.zone1.closecombatZone.show, List())
   }
 

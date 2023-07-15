@@ -3,6 +3,6 @@ package gwent.effects
 
 import gwent.observer.{ISubject, Observer}
 
-class NullEffect extends Effect{
+class NullEffect extends Effect {
   
 }

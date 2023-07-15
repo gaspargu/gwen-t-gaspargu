@@ -39,6 +39,8 @@ trait Card {
   def description: String
 
   def toString: String
+  
+  def effect: Effect
 
   /**
    *

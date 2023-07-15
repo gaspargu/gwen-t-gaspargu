@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.cards
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
-import cl.uchile.dcc.gwent.effects.CombatEffect
+import cl.uchile.dcc.gwent.effects.Effect
 
 /** Class representing a close combat unit card in the Gwen't game.
  *
@@ -16,7 +16,6 @@ import cl.uchile.dcc.gwent.effects.CombatEffect
  * @param description the description of the card.
  * @param power the initial power value of the card, which also corresponds to the
  *              strength of the troop it represents.
- *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~YOUR NAME~
  * @version 1.1
@@ -24,10 +23,12 @@ import cl.uchile.dcc.gwent.effects.CombatEffect
  */
 
 class CloseCombatCard(private val _name: String, private val _description: String, private val _power: Int,
-                      private val _effect: CombatEffect)
+                      private val _effect: Effect)
   extends AbstractUnitCard(_name, _description, _power, _effect) {
   def name: String = _name
   def description: String = _description
+  
+  def effect: Effect = _effect
 
   override def toString: String = {
     "CloseCombatCard(" + name +", " +description+ ", "+_power.toString +")"

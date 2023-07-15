@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.cards.Card
+import gwent.observer.Subject
 
-import gwent.observer.{Subject}
+import cl.uchile.dcc.gwent.board.{WeatherZone, Zone}
 
 /** Class representing a player in the Gwen't game.
  *
@@ -28,6 +29,9 @@ import gwent.observer.{Subject}
 
 class Player(private val _name: String, var gemCounter: Int, private var _deck: List[Card],
              private var _hand: List[Card]) extends Subject[String]{
+
+  var zone: Option[Zone] = null
+  var weatherZone: Option[WeatherZone] = null
 
   /** Accessor method for the player's name */
   def name: String = _name
@@ -75,18 +79,49 @@ class Player(private val _name: String, var gemCounter: Int, private var _deck: 
     _deck = scala.util.Random.shuffle(_deck)
   }
 
-  /** The player choose a card from his hand.
-   *
-   * @return The card that was chosen by the player.
-   */
-  def playCard(c: Card): Option[Card] = {
+/** Player choose a card from the deck.
+ *
+ * If are more than one of the same card, the first card in the list is choosed.
+ *
+ * @return the card that was chosen from the hand.
+ *
+ * */
+  def chooseCard(c: Card): Option[Card] = {
     val card = hand.find(_ == c)
     if (card.isDefined) {
-      val cardFound = card.get
-      val (before, after) = hand.span(_ != cardFound)
+      val _card = card.get
+      val (before, after) = hand.span(_ != _card)
       _hand = before ::: after.drop(1)
     }
     card
+  }
+
+
+  /** Player plays a cards in the board.
+   *
+   * The player plays a card. If the card exists in their hand,
+   * it is played in the corresponding zone based on the type of the card.
+   * This behavior was implemented using double dispatch.
+   *
+   * Note: if the card doesn't exist is not played. If exist two cards with the same name,
+   * the leftmost card in the list representing the hand is played.
+  */
+  def playCard(c: Card): Unit = {
+    val card: Option[Card] = chooseCard(c)
+    if (card.isDefined) {
+      val _card = card.get
+      if (zone.isDefined) {
+        val _zone = zone.get
+        _zone.closecombatZone.putCloseCombatCard(_card)
+        _zone.siegeZone.putSiegeCard(_card)
+        _zone.rangedZone.putRangedCard(_card)
+      }
+      if (weatherZone.isDefined) {
+        val _weatherZone = weatherZone.get
+        _weatherZone.putWeatherCard(_card)
+
+      }
+    }
   }
 
   /** Causes the player's gem counter to be reduced by one if it is greater than 0.
@@ -103,5 +138,16 @@ class Player(private val _name: String, var gemCounter: Int, private var _deck: 
       println("The gems counter can't be negative")
     }
   }
-  
+
+
+  /** Method that assigns an area of the board where the player can play his Unit Cards. */
+  def assignZone(z: Zone): Unit = {
+    zone = Some(z)
+  }
+
+  def assignWeatherZone(w: WeatherZone): Unit = {
+    weatherZone = Some(w)
+  }
+
+
 }

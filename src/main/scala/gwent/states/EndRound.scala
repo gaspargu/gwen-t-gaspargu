@@ -8,5 +8,7 @@ class EndRound(private val context: GameController) extends GameState(context){
 
   override def gemsNot0(): Unit = context.state = new InitRound(context)
 
-  override def someCountGemsIs0(): Unit = context.state = new EndGame(context)
+  override def someCountGemsIs0(message: String): Unit = {
+    context.state = new EndGame(context)
+  }
 }

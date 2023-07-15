@@ -13,7 +13,7 @@ import cl.uchile.dcc.gwent.cards.{AbstractUnitCard, Card, SiegeCombatCard}
  * @param player
  */
 
-class SiegeZone(val player: Player) extends CombatZone {
+class SiegeZone() extends CombatZone {
   private var list: List[SiegeCombatCard] = List()
 
   def addCard(card: SiegeCombatCard): Unit = {

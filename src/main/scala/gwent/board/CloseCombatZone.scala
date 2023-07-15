@@ -13,7 +13,7 @@ import cl.uchile.dcc.gwent.cards.{AbstractUnitCard, Card, CloseCombatCard}
  * @param player
  */
 
-class CloseCombatZone(val player: Player) extends CombatZone{
+class CloseCombatZone() extends CombatZone{
   var list: List[CloseCombatCard] = List()
 
   def addCard(card: CloseCombatCard): Unit = {

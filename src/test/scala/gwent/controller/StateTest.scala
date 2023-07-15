@@ -1,11 +1,17 @@
 package cl.uchile.dcc
 package gwent.controller
 
+import gwent.Player
+
 class StateTest extends munit.FunSuite {
   var controller: GameController = null
+  var jugador1: Player = null
+  var jugador2: Player = null
 
   override def beforeEach(context: BeforeEach): Unit = {
-    controller = new GameController
+    jugador1 = new Player("Jugador 1", 3, List(), List())
+    jugador2 = new Player("Jugador 2", 3, List(), List())
+    controller = new GameController(List(jugador1,jugador2))
   }
 
   test("controller start in Init state") {

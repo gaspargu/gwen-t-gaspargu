@@ -30,7 +30,7 @@ class BoardTest extends munit.FunSuite {
   }
 
   test("player 1 play Siege Combat Card in board") {
-    board.player1PlayCard(carta4)
+    jugador1.playCard(carta4)
     assertEquals(jugador1.hand, List(carta3,carta9))
     assertEquals(board.zone1.siegeZone.show, List(carta4))
     assertEquals(board.zone1.rangedZone.show, List())
@@ -39,7 +39,7 @@ class BoardTest extends munit.FunSuite {
 
   test("player 1 draw card and play Close Combat Card in board") {
     jugador1.drawCard()
-    board.player1PlayCard(carta1)
+    jugador1.playCard(carta1)
     assertEquals(jugador1.hand, List(carta3, carta4, carta9))
     assertEquals(board.zone1.closecombatZone.show, List(carta1))
     assertEquals(board.zone1.rangedZone.show, List())
@@ -48,7 +48,7 @@ class BoardTest extends munit.FunSuite {
 
   test("player 2 draw card and play Ranged Combat Card in board") {
     jugador2.drawCard()
-    board.player2PlayCard(carta5)
+    jugador2.playCard(carta5)
     assertEquals(jugador2.hand, List(carta7, carta8))
     assertEquals(board.zone2.closecombatZone.show, List())
     assertEquals(board.zone2.siegeZone.show, List())
@@ -56,15 +56,15 @@ class BoardTest extends munit.FunSuite {
   }
 
   test("player 2 play card that doesn't exit") {
-    board.player2PlayCard(notAvailableCard)
+    jugador2.playCard(notAvailableCard)
     assertEquals(jugador2.hand, List(carta7, carta8))
   }
 
   test("player 2 play weather card and player 1 too") {
-    board.player2PlayCard(carta7)
+    jugador2.playCard(carta7)
     assertEquals(jugador2.hand, List(carta8))
     assertEquals(board.weatherZone.show, carta7)
-    board.player1PlayCard(carta9)
+    jugador1.playCard(carta9)
     assertEquals(jugador1.hand, List(carta3,carta4))
     assertEquals(board.weatherZone.show, carta9)
   }

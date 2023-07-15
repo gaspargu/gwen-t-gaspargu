@@ -2,12 +2,14 @@ package cl.uchile.dcc
 package gwent.cards
 import gwent.board.{CloseCombatZone, RangedZone, SiegeZone, WeatherZone}
 
-import cl.uchile.dcc.gwent.effects.WeatherEffect
+import cl.uchile.dcc.gwent.effects.Effect
 
 class WeatherCard(private val _name: String, private val _description: String, 
-                  private val _effect: WeatherEffect) extends Card {
+                  private val _effect: Effect) extends Card {
   override def name: String = _name
   override def description: String = _description
+
+  override def effect: Effect = _effect
 
   override def toString: String = {
     "WeatherCard("+name+", "+description+")"

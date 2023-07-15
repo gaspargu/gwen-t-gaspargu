@@ -32,7 +32,7 @@ class PlayerTest extends munit.FunSuite {
   }
 
   test("player play card") {
-    assertEquals(jugador1.playCard(carta3).get, 
+    assertEquals(jugador1.chooseCard(carta3).get,
       new SiegeCombatCard("carta3","",3, nullEffect))
     assertEquals(jugador1.hand, List(carta4))
   }

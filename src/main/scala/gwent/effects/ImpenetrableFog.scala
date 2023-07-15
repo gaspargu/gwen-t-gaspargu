@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.effects
 
-class ImpenetrableFog {
+class ImpenetrableFog extends Effect{
 
 }

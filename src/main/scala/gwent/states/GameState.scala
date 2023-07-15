@@ -26,6 +26,6 @@ abstract class GameState(private val context: GameController) {
   def pass() = error()
   def draw3Card() = error()
   def gemsNot0() = error()
-  def someCountGemsIs0() = error()
+  def someCountGemsIs0(messaje: String) = error()
 
 }
