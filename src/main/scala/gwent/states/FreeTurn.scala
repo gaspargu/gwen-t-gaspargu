@@ -9,5 +9,5 @@ class FreeTurn(private val context: GameController) extends GameState(context) {
   override def isFreeTurn(): Boolean = true
 
   override def playCard(card: Card): Unit = {}
-  override def pass(): Unit = new EndRound(context)
+  override def pass(): Unit = context.state = new EndRound(context)
 }
